@@ -22,7 +22,7 @@ connectDb();
     <div class="container">
         <?php include 'include/menu.html' ?>
         <div id="main-contain">
-            <h2>DANH SÁCH SINH VIÊN </h2><br>
+            <h2>DANH SÁCH MÔN HỌC </h2><br>
             <div id="listSV">
                 <form method="post" id="f_search"> <input id="txtSearch" type="search" name="search" placeholder="Nhập tên hoặc MSSV">
                     <input id="btnSearch" type="submit" name="tim" value="">

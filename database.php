@@ -601,3 +601,69 @@ function addCourseHasStudent($chsCode, $courseCode, $studentCode)
 
     return $query;
 }
+
+function getStudentByCourseCode($courseCode)
+{
+    global $conn;
+
+    connectDb();
+
+    $sql = "select chs.chs_code, chs.student_code, stu.name
+    from course_has_student chs inner join student stu on chs.student_code = stu.student_code
+    where chs.course_code = '{$courseCode}'";
+
+    $query = mysqli_query($conn, $sql);
+
+    $result = array();
+
+    if ($query) {
+        while ($row = mysqli_fetch_assoc($query)) {
+            $result[] = $row;
+        }
+    }
+
+    return $result;
+}
+
+function addPointForStudent($chsCode, $l1, $l2, $l3)
+{
+    global $conn;
+
+    connectDb();
+
+    // Chống SQL Injection
+    $chsCode = addslashes($chsCode);
+    $l1 = addslashes($l1);
+    $l2 = addslashes($l2);
+    $l3 = addslashes($l3);
+
+    $sql = "INSERT INTO point(chs_code, point_l1, point_l2, point_l3) VALUES
+        ('$chsCode','$l1','$l2','$l3')";
+
+    $query = mysqli_query($conn, $sql) or die("Không nhập được điểm");
+
+    return $query;
+}
+
+function getPoint()
+{
+    global $conn;
+
+    connectDb();
+
+    $sql = "select stu.student_code, stu.name, p.point_l1, p.point_l2, p.point_l3
+    from point p inner join course_has_student chs on p.chs_code = chs.chs_code
+    inner join student stu on chs.student_code = stu.student_code";
+
+    $query = mysqli_query($conn, $sql);
+
+    $result = array();
+
+    if ($query) {
+        while ($row = mysqli_fetch_assoc($query)) {
+            $result[] = $row;
+        }
+    }
+
+    return $result;
+}

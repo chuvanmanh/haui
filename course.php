@@ -5,67 +5,67 @@ session_start();
 require './database.php';
 if (isset($_SESSION['username'])) {
 ?>
-    <head>
-        <meta charset="utf-8">
-        <title>Thông tin lớp học</title>
-        <link rel="stylesheet" href="style/style.css">
-        <link rel="stylesheet" href="style/fontawesome/css/all.css">
-        <link rel="shortcut icon" href="image/logo.ico">
-    </head>
+<head>
+    <meta charset="utf-8">
+    <title>Thông tin lớp học</title>
+    <link rel="stylesheet" href="style/style.css">
+    <link rel="stylesheet" href="style/fontawesome/css/all.css">
+    <link rel="shortcut icon" href="image/logo.ico">
+</head>
 
-    <body>
-    <?php include 'include/header.html' ?>
-        <!--endheader-->
-        <div class="body">
-            <div class="container">
-                <?php include 'include/menu.html' ?>
-                <div id="main-contain">
-                    <h2>DANH SÁCH LỚP </h2><br>
-                    <div id="listSV">
+<body>
+<?php include 'include/header.html' ?>
+<!--endheader-->
+<div class="body">
+    <div class="container">
+        <?php include 'include/menu.html' ?>
+        <div id="main-contain">
+            <h2>DANH SÁCH LỚP </h2><br>
+            <div id="listSV">
 
-                        <table width="70%">
-                            <tr>
-                                <th>STT</th>
-                                <th>Mã lớp học </th>
-                                <th>Tên môn học</th>
-                                <th>Phòng học</th>
-                                <th>Số tiết</th>
-                                <th>Ngày học</th>
-                                <th>Chức năng</th>
-                            </tr>
+                <table width="70%">
+                    <tr>
+                        <th>STT</th>
+                        <th>Mã lớp học</th>
+                        <th>Tên môn học</th>
+                        <th>Phòng học</th>
+                        <th>Số tiết</th>
+                        <th>Ngày học</th>
+                        <th>Chức năng</th>
+                    </tr>
 
-                            <?php
-                            $result = getAllCourses();
-                            $i = 0;
-                            foreach ($result as $item) {
-                                $courseId = $item['id'];
-                                $subjectCode = $item['subject_code'];
-                                $courseCode = $item['course_code'];
-                                $i++;
-                                echo "<tr> ";
-                                echo "<td>$i</td>";
-                                echo "<td>" . $item['course_code'] . "</td>";
-                                echo "<td>" . $item['name'] . "</td>";
-                                echo "<td>" . $item['room'] . "</td>";
-                                echo "<td>" . $item['number_lesson'] . "</td>";
-                                echo "<td>" . $item['day_of_week'] . "</td>";
+                    <?php
+                    $result = getAllCourses();
+                    $i = 0;
+                    foreach ($result as $item) {
+                        $courseId = $item['id'];
+                        $subjectCode = $item['subject_code'];
+                        $courseCode = $item['course_code'];
+                        $i++;
+                        echo "<tr> ";
+                        echo "<td>$i</td>";
+                        echo "<td>" . $item['course_code'] . "</td>";
+                        echo "<td>" . $item['name'] . "</td>";
+                        echo "<td>" . $item['room'] . "</td>";
+                        echo "<td>" . $item['number_lesson'] . "</td>";
+                        echo "<td>" . $item['day_of_week'] . "</td>";
 
-                                echo " <td style='text-align: center;'> <a href='function/add_course.php?course_id=$courseId'><input id='btnSua' type='button' value='sửa' '></a>   <a href='function/delete_course.php?course_id=$courseId'><input id='btnXoa' type='button' value='xóa'></a>  <a href='function/add_student_to_course.php?course_code=$courseCode'><input id='btnChitiet' type='button' value='thêm sinh viên' '></a> <a href='function/add_point.php?course_code=$courseCode'><input id='btnChitiet' type='button' value='nhập điểm' '></a> </td>";
-                            }
-                            ?>
-                        </table>
-                    </div>
-                </div>
+                        echo " <td style='text-align: center;'> <a href='function/add_course.php?course_id=$courseId'><input id='btnSua' type='button' value='sửa' '></a>   <a href='function/delete_course.php?course_id=$courseId'><input id='btnXoa' type='button' value='xóa'></a>  <a href='function/add_student_to_course.php?course_code=$courseCode'><input id='btnChitiet' type='button' value='thêm sinh viên' '></a> <a href='function/add_point.php?course_code=$courseCode'><input id='btnChitiet' type='button' value='nhập điểm' '></a> </td>";
+                    }
+                    ?>
+                </table>
             </div>
         </div>
-        <!--endbody-->
-        <footer>
-            <div class="container">
-                © Nhom 5
-            </div>
-        </footer>
+    </div>
+</div>
+<!--endbody-->
+<footer>
+    <div class="container">
+        © Nhom 5
+    </div>
+</footer>
 
-    </body>
+</body>
 
 </html>
 <?php
