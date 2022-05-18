@@ -20,6 +20,28 @@ if(isset($_GET['id'])) {
     <link rel="stylesheet" href="../style/style.css">
     <link rel="stylesheet" href="../style/fontawesome/css/all.css">
     <link rel="shortcut icon" href="../image/logo.ico">
+    <script
+            src="https://code.jquery.com/jquery-3.6.0.min.js"
+            integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+            crossorigin="anonymous"></script>
+    <script>
+        $(document).ready(function(){
+            function imagePreview(fileInput) {
+                if (fileInput.files && fileInput.files[0]) {
+                    var fileReader = new FileReader();
+                    fileReader.onload = function (event) {
+                        $('#preview').html('<img src="'+event.target.result+'" width="100px" height="auto"/>');
+                        $('#editImage').remove();
+                    };
+                    fileReader.readAsDataURL(fileInput.files[0]);
+                }
+            }
+            $("#image").change(function () {
+                imagePreview(this);
+            });
+
+        });
+    </script>
 </head>
 <body>
 <?php include '../include/header_function.html'?>
@@ -34,7 +56,7 @@ if(isset($_GET['id'])) {
                 <span style="font-size: 20px; color: red; font-style: italic"><b>Mời nhập thông tin sinh viên : </b> </span> </br>
                 (Chú ý điền đủ thông tin)
                 </br></br>
-                <form method="post" action="add_student.php">
+                <form method="post" action="add_student.php" enctype="multipart/form-data">
                     <table>
                         <tr>
                             <td>Họ tên</td>
@@ -47,10 +69,28 @@ if(isset($_GET['id'])) {
                             <td>Mã sinh viên</td>
                             <td><input type="text" name="student_code" value="<?php if($studentId) echo $studentById['student_code'];?>" required></td>
                         </tr>
+                        <?php if(!$studentId): ?>
+                            <tr>
+                                <td>Ảnh</td>
+                                <td>
+                                    <input type="file" name="image" id="image" value="<?php if($studentId) echo $studentById['image'];?>">
+                                    <div id="preview"></div>
+                                </td>
+
+                            </tr>
+
+                        <?php else: ?>
+                        <?php $srcImage = "uploads/".$studentById['image']; ?>
                         <tr>
                             <td>Ảnh</td>
-                            <td><input type="text" name="image" value="<?php if($studentId) echo $studentById['image'];?>"></td>
+                            <td>
+                                <input type="file" name="image" id="image" value="<?php if($studentId) echo $studentById['image'];?>">
+                                <div id="preview"></div>
+                                <img src="<?= $srcImage ?>" width="100px" height="auto" id="editImage"/>
+
+                            </td>
                         </tr>
+                        <?php endif; ?>
                         <tr>
                             <td>Email</td>
                             <td><input type="email" name="email" value="<?php if($studentId) echo $studentById['email'];?>" required></td>
@@ -79,10 +119,6 @@ if(isset($_GET['id'])) {
                             <td><input type="text" name="address" value="<?php if($studentId) echo $studentById['address'];?>"></td>
                         </tr>
                         <?php if(!$studentId): ?>
-                        <tr>
-                            <td>Tên đăng nhập</td>
-                            <td><input type="text" name="username" required></td>
-                        </tr>
                         <tr>
                             <td>Mật khẩu</td>
                             <td><input type="text" name="password" required></td>
@@ -117,18 +153,45 @@ if(isset($_GET['id'])) {
                         $dob = trim($_POST['dob']);
                         $phone = trim($_POST['phone_number']);
                         $address = trim($_POST['address']);
-                        $image = trim($_POST['image']);
+//                        echo "<pre/>";
+//                        var_dump($_FILES['image']);
+//                        die();
+                        // Process image
+                        $image = $_FILES['image']['name'];
+                        $uploadTo = "uploads/";
+                        $allowedImageType = array('jpg','png','jpeg','gif','pdf','doc');
+                        $imageName = $_FILES['image']['name'];
+                        $tempPath=$_FILES["image"]["tmp_name"];
+
+                        $basename = basename($imageName);
+                        $originalPath = $uploadTo.$basename;
+                        $imageType = pathinfo($originalPath, PATHINFO_EXTENSION);
+                        if(!empty($imageName)){
+
+                            if(in_array($imageType, $allowedImageType)){
+                                // Upload file to server
+                                if(move_uploaded_file($tempPath,$originalPath)){
+                                    echo $imageName." was uploaded successfully";
+                                    // write here sql query to store image name in database
+
+                                }else{
+                                    echo 'image Not uploaded ! try again';
+                                }
+                            }else{
+                                echo $imageType." image type not allowed";
+                            }
+                        }else{
+                            echo "Please Select a image";
+                        }
+
+                        //
                         if(!$studentId) {
-                            $username = trim($_POST['username']);
+                            $username = $studentCode;
                             $password = trim($_POST['password']);
                             $passwordConfirm = trim($_POST['password_confirm']);
                             if($password == $passwordConfirm) {
-
-                                addStudent($studentCode, $name, $email, $gender, $dob, $phone, $address, $image);
-
-
-                                $newStudentId = getStudentIdByStudentCode($studentCode);
                                 addUser($username,$password,2);
+                                addStudent($studentCode, $name, $email, $gender, $dob, $phone, $address, $image);
 
                             } else {
                                 echo '<p style="color:red;font-weight:bold; "> Mật khẩu xác nhận chưa đúng!</p> ';

@@ -1,7 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="513dcc16-9ebe-4bc6-8c83-f49d390c7549" name="Changes" comment="" />
+    <list default="true" id="513dcc16-9ebe-4bc6-8c83-f49d390c7549" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database.php" beforeDir="false" afterPath="$PROJECT_DIR$/database.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/function/add_student.php" beforeDir="false" afterPath="$PROJECT_DIR$/function/add_student.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/function/add_teacher.php" beforeDir="false" afterPath="$PROJECT_DIR$/function/add_teacher.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/menu.html" beforeDir="false" afterPath="$PROJECT_DIR$/include/menu.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/menu_function.html" beforeDir="false" afterPath="$PROJECT_DIR$/include/menu_function.html" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -73,7 +80,11 @@
       <workItem from="1652343768293" duration="2000" />
       <workItem from="1652517697834" duration="674000" />
       <workItem from="1652518891263" duration="22678000" />
-      <workItem from="1652696333089" duration="4500000" />
+      <workItem from="1652696333089" duration="5871000" />
+      <workItem from="1652779691633" duration="8326000" />
+      <workItem from="1652840524932" duration="4873000" />
+      <workItem from="1652846556839" duration="1001000" />
+      <workItem from="1652853251996" duration="706000" />
     </task>
     <servers />
   </component>
@@ -90,16 +101,5 @@
         </entry>
       </map>
     </option>
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="php">
-          <url>file://$PROJECT_DIR$/function/add_teacher.php</url>
-          <line>125</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>

@@ -80,6 +80,7 @@ function addStudent($studentCode, $name, $email, $gender, $dob, $phone, $address
 
     $sql = "INSERT INTO student(student_code, name, email, gender, dob, phone_number, address, image) VALUES
         ('$studentCode','$name','$email','$gender','$dob','$phone','$address','$image') ";
+    echo $sql;
 
     $query = mysqli_query($conn, $sql) or die("thêm student dữ liệu thất bại");
 
