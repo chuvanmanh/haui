@@ -56,7 +56,7 @@ if(isset($_GET['id'])) {
                 <span style="font-size: 20px; color: red; font-style: italic"><b>Mời nhập thông tin sinh viên : </b> </span> </br>
                 (Chú ý điền đủ thông tin)
                 </br></br>
-                <form method="post">
+                <form method="post"  enctype="multipart/form-data" action="add_teacher.php">
                     <table>
                         <tr>
                             <td>Họ tên</td>
@@ -80,11 +80,7 @@ if(isset($_GET['id'])) {
                             </tr>
 
                         <?php else: ?>
-                            <?php $srcImage = "uploads/".$teacherById['image'];
-                            var_dump($teacherById['image']);
-                            die();
-                            ?>
-
+                            <?php $srcImage = "uploads/".$teacherById['image']; ?>
                             <tr>
                                 <td>Ảnh</td>
                                 <td>
