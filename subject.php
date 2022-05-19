@@ -24,8 +24,9 @@ connectDb();
         <div id="main-contain">
             <h2>DANH SÁCH MÔN HỌC </h2><br>
             <div id="listSV">
-                <form method="post" id="f_search"> <input id="txtSearch" type="search" name="search" placeholder="Nhập tên hoặc MSSV">
-                    <input id="btnSearch" type="submit" name="tim" value="">
+                <form method="post" id="f_search">
+                    <input id="txtSearch" type="search" name="search" placeholder="Nhập tên hoặc MSSV">
+
                 </form>
 
                 <table width="70%">
@@ -37,17 +38,7 @@ connectDb();
                         <th>Khoa</th>
                         <th>Chức năng</th>
                     </tr>
-
                     <?php
-                    if (isset($_POST['tim'])) {
-                        $giatri = $_POST['search'];
-                        //echo $giatri;
-                        if (empty($giatri)) {
-                            echo "Bạn muốn tìm gì?";
-                        } else {
-                            $query = "SELECT * FROM sinhvien WHERE sinhvien.name LIKE '%" . $giatri . "%' or sinhvien.sinhvienID = '$giatri'";
-                        }
-                    } else {
                         $result = getAllSubjects();
                         $i = 0;
                         foreach ($result as $item) {
@@ -60,9 +51,7 @@ connectDb();
                             echo "<td>" . $item['num_credit'] . "</td>";
                             echo "<td>" . $item['major'] . "</td>";
                             echo " <td style='text-align: center;'> <a href='function/add_subject.php?id=" . $subjectId . "'><input id='btnSua' type='button' value='sửa' '></a>   <a href='function/delete_subject.php?id=" . $subjectId . "'><input id='btnXoa' type='button' value='xóa'></a> <a href='function/add_course.php?id=" . $subjectId . "'><input id='btnChitiet' type='button' value='tạo khoá học' '></a>  </td>";
-
                         }
-                    }
                     ?>
                 </table>
             </div>
@@ -71,7 +60,6 @@ connectDb();
             <form id="formChucnang">
                 <a href="function/add_subject.php"><input id="btnThemSV" type="button" value="THÊM MH"> </a>
             </form>
-
         </div>
 
     </div>

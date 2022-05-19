@@ -668,3 +668,24 @@ function getPoint()
 
     return $result;
 }
+
+function searchStudent($keySearch)
+{
+    global $conn;
+
+    connectDb();
+
+    $sql = "SELECT * FROM `student` WHERE (`student_code` LIKE '%$keySearch%' OR `name` LIKE '%$keySearch%' OR `email` LIKE '%$keySearch%')";
+
+    $query = mysqli_query($conn, $sql);
+
+    $result = '';
+
+    if ($query) {
+        while ($row = mysqli_fetch_assoc($query)) {
+            $result .= "<tr><td>" . $row['name'] . "</td>" . "<td>" . $row['student_code'] . "</td>" . "<td>" . $row['email'] . "</td></tr>";
+        }
+
+        return $result;
+    }
+}
