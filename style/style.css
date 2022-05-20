@@ -237,7 +237,60 @@ header{
 #listSV tr:nth-child(even){
     background-color: #f1f1f1;
 }
-
+.search-box{
+  width: fit-content;
+  height: fit-content;
+  position: relative;
+}
+.input-search{
+  height: 10px;
+  width: 0px;
+  border-style: none;
+  padding: 10px;
+  font-size: 14px;
+  letter-spacing: 2px;
+  outline: none;
+  border-radius: 25px;
+  transition: all .5s ease-in-out;
+  background-color: #22a6b3;
+  padding-right: 20px;
+  color:#fff;
+}
+.input-search::placeholder{
+  color:rgba(255,255,255,.5);
+  font-size: 13px;
+  letter-spacing: 1px;
+  font-weight: 100;
+}
+.btn-search{
+  width: 30px;
+  height: 30px;
+  border-style: none;
+  font-size: 14px;
+  font-weight: bold;
+  outline: none;
+  cursor: pointer;
+  border-radius: 50%;
+  position: absolute;
+  right: 0px;
+  color:#ffffff ;
+  background-color:transparent;
+  pointer-events: painted;
+}
+.btn-search:focus ~ .input-search{
+  width: 200px;
+  border-radius: 0px;
+  background-color: transparent;
+  border-bottom:1px solid rgba(255,255,255,.5);
+  transition: all 500ms cubic-bezier(0, 0.110, 0.35, 2);
+}
+.input-search:focus{
+  width: 200px;
+  border-radius: 0px;
+  background-color: transparent;
+  border-bottom:1px solid rgba(255,255,255,.5);
+  transition: all 500ms cubic-bezier(0, 0.110, 0.35, 2);
+}
 .form {
 	width: 500px;
 	position: relative;
@@ -487,14 +540,14 @@ header{
     background-color: red;
 }
 /*search -box */
-#f_search{
+/* #f_search{
 	width: 200px;
 	position: relative;
 	margin-bottom: 5px;
 	float: right;
 	margin-right: 10px;
 	box-shadow: 0px 0px 1px #436646 ;
-	border-radius: 5px;
+	border-radius: 5px; */
 
 }
 #search{

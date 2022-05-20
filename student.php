@@ -56,9 +56,9 @@ connectDb();
         <div id="main-contain">
             <h2>DANH SÁCH SINH VIÊN </h2><br>
             <div id="listSV">
-                <div>
-                    <input id="search" type="search" name="search" placeholder="Nhập tên hoặc MSSV">
-                    <div id="showValue"></div>
+                <div class="search-box">
+                    <button class="btn-search"><i class="fas fa-search"></i></button>
+                    <input type="text" class="input-search" placeholder="Type to Search...">
                 </div>
                 <br>
 
@@ -88,7 +88,7 @@ connectDb();
                         echo "<td>" . date("d-m-Y", strtotime($item['dob'])) . "</td>";
                         echo "<td>" . $item['phone_number'] . "</td>";
                         echo "<td>" . $item['address'] . "</td>";
-                        echo " <td style='text-align: center;'> <a href='function/add_student.php?id=" . $studentId . "'><input id='btnSua' type='button' value='sửa' '></a>   <a href='function/delete_student.php?id=" . $studentId . "'><input id='btnXoa' type='button' value='xóa'></a> <a href='function/view_student.php?id=" . $studentId . "'><input id='btnChitiet' type='button' value='chi  tiết' '></a>  </td>";
+                        echo " <td style='text-align: center;'> <a href='function/add_student.php?id=" . $studentId . "'><input id='btnSua' type='button' value='Sửa' '></a>   <a href='function/delete_student.php?id=" . $studentId . "'><input id='btnXoa' type='button' value='Xóa'></a> <a href='function/view_student.php?id=" . $studentId . "'><input id='btnChitiet' type='button' value='Chi  tiết' '></a>  </td>";
                     }
                     ?>
                 </table>
@@ -96,7 +96,7 @@ connectDb();
 
             <br>
             <form id="formChucnang">
-                <a href="function/add_student.php"><input id="btnThemSV" type="button" value="THÊM SV"> </a>
+                <a href="function/add_student.php"><input id="btnThemSV" type="button" value="THÊM SINH VIEN"> </a>
             </form>
 
         </div>

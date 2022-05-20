@@ -7,7 +7,7 @@ function connectDb()
     global $conn;
 
     if (!$conn) {
-        $conn = mysqli_connect('localhost', 'root', 'mysql', 'haui') or die ('Can\'t not connect to database');
+        $conn = mysqli_connect('localhost', 'root', '', 'haui') or die ('Can\'t not connect to database');
         mysqli_set_charset($conn, 'utf8');
     }
 }
@@ -141,12 +141,12 @@ function editStudent($studentId, $studentCode, $name, $email, $gender, $dob, $ph
     $image = addslashes($image);
 
     $sql = "UPDATE student SET
-                    student_code = '$studentCode', 
-                    name = '$name', 
-                    email = '$email', 
-                    gender = '$gender', 
-                    dob = '$dob', 
-                    phone_number = '$phone', 
+                    student_code = '$studentCode',
+                    name = '$name',
+                    email = '$email',
+                    gender = '$gender',
+                    dob = '$dob',
+                    phone_number = '$phone',
                     address = '$address',
                     image = '$image'
             WHERE id = {$studentId}";
@@ -259,7 +259,7 @@ function editClass($classId, $name, $teacherName)
     $teacherName = addslashes($teacherName);
 
     $sql = "UPDATE class SET
-                    name = '$name', 
+                    name = '$name',
                     teacher_name = '$teacherName'
             WHERE id = {$classId}";
 
@@ -365,12 +365,12 @@ function editTeacher($teacherId, $teacherCode, $name, $email, $specialize, $gend
     $image = addslashes($image);
 
     $sql = "UPDATE teacher SET
-                    teacher_code = '$teacherCode', 
-                    name = '$name', 
-                    email = '$email', 
-                    specialize = '$specialize', 
-                    gender = '$gender', 
-                    phone_number = '$phone', 
+                    teacher_code = '$teacherCode',
+                    name = '$name',
+                    email = '$email',
+                    specialize = '$specialize',
+                    gender = '$gender',
+                    phone_number = '$phone',
                     address = '$address',
                     image = '$image'
             WHERE id = {$teacherId}";
@@ -468,9 +468,9 @@ function editSubject($subjectId, $subjectCode, $name, $numberCredit, $major)
     $major = addslashes($major);
 
     $sql = "UPDATE subject SET
-                    subject_code = '$subjectCode', 
-                    name = '$name', 
-                    num_credit = '$numberCredit', 
+                    subject_code = '$subjectCode',
+                    name = '$name',
+                    num_credit = '$numberCredit',
                     major = '$major'
             WHERE id = {$subjectId}";
 
@@ -516,10 +516,10 @@ function editCourse($courseId, $courseCode, $room, $teacherCode, $numberOfLesson
     $dayOfWeek = addslashes($dayOfWeek);
 
     $sql = "UPDATE course SET
-                    course_code = '$courseCode', 
-                    room = '$room', 
-                    teacher_code = '$teacherCode', 
-                    number_lesson = '$numberOfLesson', 
+                    course_code = '$courseCode',
+                    room = '$room',
+                    teacher_code = '$teacherCode',
+                    number_lesson = '$numberOfLesson',
                     day_of_week = '$dayOfWeek'
             WHERE id = {$courseId}";
 

@@ -25,10 +25,13 @@ connectDb();
             <h2>DANH SÁCH MÔN HỌC </h2><br>
             <div id="listSV">
                 <form method="post" id="f_search">
-                    <input id="txtSearch" type="search" name="search" placeholder="Nhập tên hoặc MSSV">
-
+                    <!-- <input id="txtSearch" type="search" name="search" placeholder="Nhập tên hoặc MSSV"> -->
+                    <div class="search-box">
+                        <button class="btn-search"><i class="fas fa-search"></i></button>
+                        <input type="text" class="input-search" placeholder="Type to Search...">
+                    </div>
                 </form>
-
+                <br>
                 <table width="70%">
                     <tr>
                         <th>STT</th>
@@ -50,7 +53,7 @@ connectDb();
                             echo "<td>" . $item['name'] . "</td>";
                             echo "<td>" . $item['num_credit'] . "</td>";
                             echo "<td>" . $item['major'] . "</td>";
-                            echo " <td style='text-align: center;'> <a href='function/add_subject.php?id=" . $subjectId . "'><input id='btnSua' type='button' value='sửa' '></a>   <a href='function/delete_subject.php?id=" . $subjectId . "'><input id='btnXoa' type='button' value='xóa'></a> <a href='function/add_course.php?id=" . $subjectId . "'><input id='btnChitiet' type='button' value='tạo khoá học' '></a>  </td>";
+                            echo " <td style='text-align: center;'> <a href='function/add_subject.php?id=" . $subjectId . "'><input id='btnSua' type='button' value='Sửa' '></a>   <a href='function/delete_subject.php?id=" . $subjectId . "'><input id='btnXoa' type='button' value='Xóa'></a> <a href='function/add_course.php?id=" . $subjectId . "'><input id='btnChitiet' type='button' value='Tạo khoá học' '></a>  </td>";
                         }
                     ?>
                 </table>
@@ -58,7 +61,7 @@ connectDb();
 
             <br>
             <form id="formChucnang">
-                <a href="function/add_subject.php"><input id="btnThemSV" type="button" value="THÊM MH"> </a>
+                <a href="function/add_subject.php"><input id="btnThemSV" type="button" value="THÊM MÔN HỌC"> </a>
             </form>
         </div>
 

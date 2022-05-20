@@ -24,10 +24,13 @@ connectDb();
             <div id="main-contain">
                 <h2>DANH SÁCH GIẢNG VIÊN </h2><br>
                 <div id="listSV">
-                    <form method="post" id="f_search"> <input id="txtSearch" type="search" name="search" placeholder="Nhập tên hoặc MSSV">
-                        <input id="btnSearch" type="submit" name="tim" value="">
+                    <form method="post" id="f_search">
+                        <div class="search-box">
+                            <button class="btn-search"><i class="fas fa-search"></i></button>
+                            <input type="text" class="input-search" placeholder="Type to Search...">
+                        </div>
                     </form>
-
+                    <br>
                     <table width="70%">
                         <tr>
                             <th>STT</th>
@@ -63,7 +66,7 @@ connectDb();
                                 echo "<td>" . $item['specialize'] . "</td>";
                                 echo "<td>" . $item['phone_number'] . "</td>";
                                 echo "<td>" . $item['address'] . "</td>";
-                                echo " <td style='text-align: center;'> <a href='function/add_teacher.php?id=" . $teacherId . "'><input id='btnSua' type='button' value='sửa' '></a>   <a href='function/delete_teacher.php?id=" . $teacherId . "'><input id='btnXoa' type='button' value='xóa'></a> <a href='function/view_teacher.php?id=" . $teacherId . "'><input id='btnChitiet' type='button' value='chi  tiết' '></a>  </td>";
+                                echo " <td style='text-align: center;'> <a href='function/add_teacher.php?id=" . $teacherId . "'><input id='btnSua' type='button' value='Sửa' '></a>   <a href='function/delete_teacher.php?id=" . $teacherId . "'><input id='btnXoa' type='button' value='Xóa'></a> <a href='function/view_teacher.php?id=" . $teacherId . "'><input id='btnChitiet' type='button' value='Chi  tiết' '></a>  </td>";
 
                             }
                         }
@@ -73,7 +76,7 @@ connectDb();
 
                 <br>
                 <form id="formChucnang">
-                    <a href="function/add_teacher.php"><input id="btnThemSV" type="button" value="THÊM GV"> </a>
+                    <a href="function/add_teacher.php"><input id="btnThemSV" type="button" value="THÊM GIÁO VIÊN"> </a>
                 </form>
 
             </div>

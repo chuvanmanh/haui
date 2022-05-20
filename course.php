@@ -22,7 +22,11 @@ if (isset($_SESSION['username'])) {
         <div id="main-contain">
             <h2>DANH SÁCH LỚP </h2><br>
             <div id="listSV">
-
+                <div class="search-box">
+                    <button class="btn-search"><i class="fas fa-search"></i></button>
+                    <input type="text" class="input-search" placeholder="Type to Search...">
+                </div>
+                <br>
                 <table width="70%">
                     <tr>
                         <th>STT</th>
@@ -50,7 +54,7 @@ if (isset($_SESSION['username'])) {
                         echo "<td>" . $item['number_lesson'] . "</td>";
                         echo "<td>" . $item['day_of_week'] . "</td>";
 
-                        echo " <td style='text-align: center;'> <a href='function/add_course.php?course_id=$courseId'><input id='btnSua' type='button' value='sửa' '></a>   <a href='function/delete_course.php?course_id=$courseId'><input id='btnXoa' type='button' value='xóa'></a>  <a href='function/add_student_to_course.php?course_code=$courseCode'><input id='btnChitiet' type='button' value='thêm sinh viên' '></a> <a href='function/add_point.php?course_code=$courseCode'><input id='btnChitiet' type='button' value='nhập điểm' '></a> </td>";
+                        echo " <td style='text-align: center;'> <a href='function/add_course.php?course_id=$courseId'><input id='btnSua' type='button' value='Sửa' '></a>   <a href='function/delete_course.php?course_id=$courseId'><input id='btnXoa' type='button' value='Xóa'></a>  <a href='function/add_student_to_course.php?course_code=$courseCode'><input id='btnChitiet' type='button' value='Thêm sinh viên' '></a> <a href='function/add_point.php?course_code=$courseCode'><input id='btnChitiet' type='button' value='Nhập điểm' '></a> </td>";
                     }
                     ?>
                 </table>

@@ -22,7 +22,11 @@ if (isset($_SESSION['username'])) {
         <div id="main-contain">
             <h2>DANH SÁCH ĐIỂM CỦA SINH VIÊN </h2><br>
             <div id="listSV">
-
+                <div class="search-box">
+                    <button class="btn-search"><i class="fas fa-search"></i></button>
+                    <input type="text" class="input-search" placeholder="Type to Search...">
+                </div>
+                <br>
                 <table width="70%">
                     <tr>
                         <th>STT</th>
