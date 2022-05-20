@@ -4,7 +4,7 @@ if (isset($_SESSION['username'])) {
     require_once("../database.php");
     if (isset($_POST['key_search'])) {
         $keySearch = $_POST['key_search'];
-         $result = searchStudent($keySearch);
+        $result = searchStudent($keySearch);
         echo $result;
     } else echo "Không tìm thấy!";
 } else {

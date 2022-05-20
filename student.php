@@ -57,9 +57,13 @@ connectDb();
             <h2>DANH SÁCH SINH VIÊN </h2><br>
             <div id="listSV">
                 <div class="search-box">
-                    <button class="btn-search"><i class="fas fa-search"></i></button>
-                    <input type="text" class="input-search" placeholder="Type to Search...">
-                </div>
+                        <button class="btn-search"><i class="fas fa-search"></i></button>
+                        <input type="text" name="search" class="search input-search" placeholder="Type to Search...">
+                    </div>
+                <!-- <div>
+                    <input id="search" type="search" name="search" placeholder="Nhập tên hoặc MSSV">
+                    <div id="showValue"></div>
+                </div> -->
                 <br>
 
                 <table width="70%">
@@ -96,7 +100,7 @@ connectDb();
 
             <br>
             <form id="formChucnang">
-                <a href="function/add_student.php"><input id="btnThemSV" type="button" value="THÊM SINH VIEN"> </a>
+                <a href="function/add_student.php"><input id="btnThemSV" type="button" value="THÊM SINH VIÊN"> </a>
             </form>
 
         </div>
