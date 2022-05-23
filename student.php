@@ -18,15 +18,16 @@ connectDb();
             integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
             crossorigin="anonymous"></script>
     <script>
-        $(document).ready(function () {
-            function confirmDelete()
+        function confirmDelete()
             {
-                var x = confirm("Are you sure you want to delete?");
+                var x = confirm("Bạn có muốn xoá sinh viên này không ?");
                 if (x)
                     return true;
                 else
                     return false;
             }
+        $(document).ready(function () {
+
             $('#search').on("keyup", function () {
                 var keySearch = $(this).val();
 

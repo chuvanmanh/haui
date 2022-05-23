@@ -7,7 +7,7 @@ function connectDb()
     global $conn;
 
     if (!$conn) {
-        $conn = mysqli_connect('localhost', 'root', 'mysql', 'haui') or die ('Can\'t not connect to database');
+        $conn = mysqli_connect('localhost', 'root', '', 'haui') or die ('Can\'t not connect to database');
         mysqli_set_charset($conn, 'utf8');
     }
 }
@@ -652,7 +652,7 @@ function getPoint()
 
     connectDb();
 
-    $sql = "select sbj.name as subject_name, stu.student_code, stu.name, p.point_l1, p.point_l2, p.point_l3 from point p 
+    $sql = "select sbj.name as subject_name, stu.student_code, stu.name, p.point_l1, p.point_l2, p.point_l3 from point p
     inner join course_has_student chs on p.chs_code = chs.chs_code
     inner join student stu on chs.student_code = stu.student_code
     inner join course c on c.course_code = chs.course_code

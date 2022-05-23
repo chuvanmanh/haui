@@ -34,10 +34,10 @@ if(isset($_GET['course_id'])) {
     <div class="container">
         <?php include '../include/menu_function.html'?>
         <div id="main-contain">
-            <h2>Thêm Sinh Viên</h2>
+            <h2>Thêm Lớp Học</h2>
 
             <div class="form">
-                <span style="font-size: 20px; color: red; font-style: italic"><b>Mời nhập thông tin khoá học : </b> </span> </br>
+                <span style="font-size: 20px; color: red; font-style: italic"><b>Mời nhập thông tin lớp học : </b> </span> </br>
                 (Chú ý điền đủ thông tin)
                 </br></br>
                 <form method="post" action="add_course.php">
@@ -57,14 +57,14 @@ if(isset($_GET['course_id'])) {
                         </tr>
                         <?php endif; ?>
                         <tr>
-                            <td>Mã khoá học</td>
+                            <td>Mã lớp học</td>
                             <td>
                                 <input type="text" name="course_code" value="<?php if($courseId) echo $courseById['course_code'];?>">
                                 <input type="hidden" name="course_id" value="<?php if($courseId) echo $courseId;?>"/>
                             </td>
                         </tr>
                         <tr>
-                            <td>Room</td>
+                            <td>Tên lớp</td>
                             <td>
                                 <input type="text" name="room" value="<?php if($courseId) echo $courseById['room'];?>">
                             </td>

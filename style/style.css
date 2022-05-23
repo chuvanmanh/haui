@@ -392,10 +392,13 @@ header{
 	background: green;
 }
 #contact-contain{
-	padding-top: 30px;
-	padding-left:30%;
-
+	position: relative;
+  transform: translateX(-50%);
+  right: -50%;
+  width: 400px;
 	font-size: 16px;
+	padding-top: 48px;
+  padding-bottom: 48px;
 }
 #contact-contain img{
 	float:left;
