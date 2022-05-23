@@ -549,15 +549,6 @@ header{
 	box-shadow: 0px 0px 1px #436646 ;
 	border-radius: 5px;
 }*/
-#search{
-	width:170px;
-	height: 30px;
-	position: relative;
-	border: none;
-	border-radius: 5px 0px 0px 5px;
-	padding: 5px;
-	background: #fefefe8a;
-}
 
 #btnSearch{
 	background: url(../image/searchicon.png) no-repeat center ;

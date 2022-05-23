@@ -100,17 +100,31 @@ if(isset($_GET['id'])) {
                             <td>Specialize</td>
                             <td><input type="text" name="specialize" value="<?php if($teacherId) echo $teacherById['specialize'];?>" required></td>
                         </tr>
-                        <tr>
-                            <td>Giới tính:</td>
-                            <td>
-                                <select name="gender">
-                                    <option value="">Please select</option>
-                                    <option value="Nam">Nam</option>
-                                    <option value="Nu">Nữ</option>
-                                    <option value="Khac">Khác</option>
-                                </select>
-                            </td>
-                        </tr>
+                        <?php if($teacherId): ?>
+                            <tr>
+                                <td>Giới tính:</td>
+                                <td>
+                                    <select name="gender" required>
+                                        <option value="" <?php if($teacherById['gender']=="") echo 'selected' ?>>Please select</option>
+                                        <option value="Nam" <?php if($teacherById['gender']=="Nam") echo 'selected' ?>>Nam</option>
+                                        <option value="Nu" <?php if($teacherById['gender']=="Nu") echo 'selected' ?>>Nữ</option>
+                                        <option value="Khac" <?php if($teacherById['gender']=="Khac") echo 'selected' ?>>Khác</option>
+                                    </select>
+                                </td>
+                            </tr>
+                        <?php else: ?>
+                            <tr>
+                                <td>Giới tính:</td>
+                                <td>
+                                    <select name="gender" required>
+                                        <option value="">Please select</option>
+                                        <option value="Nam">Nam</option>
+                                        <option value="Nu">Nữ</option>
+                                        <option value="Khac">Khác</option>
+                                    </select>
+                                </td>
+                            </tr>
+                        <?php endif; ?>
                         <tr>
                             <td>Số điện thoại</td>
                             <td><input type="text" name="phone_number" value="<?php if($teacherId) echo $teacherById['phone_number'];?>" required></td>

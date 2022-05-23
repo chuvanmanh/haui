@@ -18,27 +18,34 @@ connectDb();
             integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
             crossorigin="anonymous"></script>
     <script>
-        $(document).ready(function(){
-            $('#search').on("keyup", function(){
+        $(document).ready(function () {
+            function confirmDelete()
+            {
+                var x = confirm("Are you sure you want to delete?");
+                if (x)
+                    return true;
+                else
+                    return false;
+            }
+            $('#search').on("keyup", function () {
                 var keySearch = $(this).val();
 
                 if (keySearch != "") {
-                $.ajax({
-                    method:'POST',
-                    url:'function/search_student.php',
-                    data:{key_search:keySearch},
-                    success:function(response)
-                    {
-                        $('#showValue').html(response);
-                        $('#showValue').css('display', 'block');
-                        $("#search").focusout(function () {
-                            $('#showValue').css('display', 'none');
-                        });
-                        $("#search").focusin(function () {
+                    $.ajax({
+                        method: 'POST',
+                        url: 'function/search_student.php',
+                        data: {key_search: keySearch},
+                        success: function (response) {
+                            $('#showValue').html(response);
                             $('#showValue').css('display', 'block');
-                        });
-                    }
-                });
+                            $("#search").focusout(function () {
+                                $('#showValue').css('display', 'none');
+                            });
+                            $("#search").focusin(function () {
+                                $('#showValue').css('display', 'block');
+                            });
+                        }
+                    });
                 } else {
                     $('#showValue').css('display', 'none');
                 }
@@ -57,13 +64,10 @@ connectDb();
             <h2>DANH SÁCH SINH VIÊN </h2><br>
             <div id="listSV">
                 <div class="search-box">
-                        <button class="btn-search"><i class="fas fa-search"></i></button>
-                        <input type="text" name="search" class="search input-search" placeholder="Type to Search...">
-                    </div>
-                <!-- <div>
-                    <input id="search" type="search" name="search" placeholder="Nhập tên hoặc MSSV">
+                    <button class="btn-search"><i class="fas fa-search"></i></button>
+                    <input type="text" name="search" class="search input-search" placeholder="Type to Search..." id="search">
                     <div id="showValue"></div>
-                </div> -->
+                </div>
                 <br>
 
                 <table width="70%">
@@ -81,18 +85,19 @@ connectDb();
                     <?php
                     $result = getAllStudents();
                     $i = 0;
+                    $a = 'abc';
                     foreach ($result as $item) {
                         $studentId = $item['id'];
                         $i++;
                         echo "<tr> ";
-                        echo "<td>$i</td>";
+                        echo "<td> $i</td>";
                         echo "<td>" . $item['name'] . "</td>";
                         echo "<td>" . $item['student_code'] . "</td>";
                         echo "<td>" . $item['email'] . "</td>";
                         echo "<td>" . date("d-m-Y", strtotime($item['dob'])) . "</td>";
                         echo "<td>" . $item['phone_number'] . "</td>";
                         echo "<td>" . $item['address'] . "</td>";
-                        echo " <td style='text-align: center;'> <a href='function/add_student.php?id=" . $studentId . "'><input id='btnSua' type='button' value='Sửa' '></a>   <a href='function/delete_student.php?id=" . $studentId . "'><input id='btnXoa' type='button' value='Xóa'></a> <a href='function/view_student.php?id=" . $studentId . "'><input id='btnChitiet' type='button' value='Chi  tiết' '></a>  </td>";
+                        echo " <td style='text-align: center;'> <a href='function/add_student.php?id=" . $studentId . "'><input id='btnSua' type='button' value='Sửa' '></a>   <a Onclick='confirmDelete()' href='function/delete_student.php?id=" . $studentId . "'><input id='btnXoa' type='button' value='Xóa' ></a> <a href='function/view_student.php?id=" . $studentId . "'><input id='btnChitiet' type='button' value='Chi  tiết' '></a>  </td>";
                     }
                     ?>
                 </table>

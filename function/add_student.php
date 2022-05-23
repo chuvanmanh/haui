@@ -95,10 +95,23 @@ if(isset($_GET['id'])) {
                             <td>Email</td>
                             <td><input type="email" name="email" value="<?php if($studentId) echo $studentById['email'];?>" required></td>
                         </tr>
+                        <?php if($studentId): ?>
                         <tr>
                             <td>Giới tính:</td>
                             <td>
-                                <select name="gender">
+                                <select name="gender" required>
+                                    <option value="" <?php if($studentById['gender']=="") echo 'selected' ?>>Please select</option>
+                                    <option value="Nam" <?php if($studentById['gender']=="Nam") echo 'selected' ?>>Nam</option>
+                                    <option value="Nu" <?php if($studentById['gender']=="Nu") echo 'selected' ?>>Nữ</option>
+                                    <option value="Khac" <?php if($studentById['gender']=="Khac") echo 'selected' ?>>Khác</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <?php else: ?>
+                        <tr>
+                            <td>Giới tính:</td>
+                            <td>
+                                <select name="gender" required>
                                     <option value="">Please select</option>
                                     <option value="Nam">Nam</option>
                                     <option value="Nu">Nữ</option>
@@ -106,6 +119,7 @@ if(isset($_GET['id'])) {
                                 </select>
                             </td>
                         </tr>
+                        <?php endif; ?>
                         <tr>
                             <td>Ngày sinh</td>
                             <td><input type="date" name="dob" value="<?php if($studentId) echo $studentById['dob'];?>"></td>
@@ -141,9 +155,9 @@ if(isset($_GET['id'])) {
                 if (isset($_POST['addStudent'])) {
                     if (empty($_POST['name']) || empty($_POST['student_code']) || empty($_POST['phone_number']) || empty($_POST['email'])) {
                         echo '<p style="color:red;font-weight:bold; "> Bạn chưa nhập thông tin đầy đủ !</p> ';
-//                        if(!$studentId && (empty($_POST['username']) || empty($_POST['password']) || empty($_POST['password_confirm']))) {
-//                            echo '<p style="color:red;font-weight:bold; "> Bạn chưa nhập thông tin username hoặc password đầy đủ !</p> ';
-//                        }
+                        if(!$studentId && (empty($_POST['username']) || empty($_POST['password']) || empty($_POST['password_confirm']))) {
+                            echo '<p style="color:red;font-weight:bold; "> Bạn chưa nhập thông tin username hoặc password đầy đủ !</p> ';
+                        }
                     } else {
                         $studentId = trim($_POST['id']);
                         $name = trim($_POST['name']);
@@ -153,9 +167,7 @@ if(isset($_GET['id'])) {
                         $dob = trim($_POST['dob']);
                         $phone = trim($_POST['phone_number']);
                         $address = trim($_POST['address']);
-//                        echo "<pre/>";
-//                        var_dump($_FILES['image']);
-//                        die();
+
                         // Process image
                         $image = $_FILES['image']['name'];
                         $uploadTo = "uploads/";

@@ -30,6 +30,7 @@ if (isset($_SESSION['username'])) {
                 <table width="70%">
                     <tr>
                         <th>STT</th>
+                        <th>Tên môn học </th>
                         <th>Mã sinh viên </th>
                         <th>Tên sinh viên</th>
                         <th>Điểm L1</th>
@@ -44,6 +45,7 @@ if (isset($_SESSION['username'])) {
                         $i++;
                         echo "<tr> ";
                         echo "<td>$i</td>";
+                        echo "<td>" . $item['subject_name'] . "</td>";
                         echo "<td>" . $item['student_code'] . "</td>";
                         echo "<td>" . $item['name'] . "</td>";
                         echo "<td>" . $item['point_l1'] . "</td>";

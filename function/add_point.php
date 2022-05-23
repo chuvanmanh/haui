@@ -11,6 +11,9 @@ if(isset($_GET['course_code'])) {
 } else {
     $courseCode = '';
 }
+//echo "<pre/>";
+//var_dump($studentByCourseCode);
+//die();
 ?>
 
 <head>
@@ -25,13 +28,12 @@ if(isset($_GET['course_code'])) {
             crossorigin="anonymous"></script>
     <script>
         $(document).ready(function(){
-            $("#table tr td input.update").click(function(){
-                $(this).addClass('selected').siblings().removeClass('selected');
-                var chsCode = $("#table tr").find('input.chsCode').val();
-                var l1 = $("#table tr").find('input.l1').val();
-                var l2 = $("#table tr").find('input.l2').val();
-                var l3 = $("#table tr").find('input.l3').val();
-                alert(l1);
+            $(".use-address").click(function(){
+                var chsCode = $(this).closest("tr").find(".nr").text();
+                alert(chsCode);
+                var l1 = $(this).closest("tr").find(".l1").text();
+                var l2 = $(this).closest("tr").find(".l2").text();
+                var l3 = $(this).closest("tr").find(".l3").text();
                 $.post({
                     url: 'add_point_for_student.php',
                     data: {
@@ -81,14 +83,14 @@ if(isset($_GET['course_code'])) {
                             $chsCode = $item['chs_code'];
                             $i++;
                             echo "<tr> ";
-                            echo "<td>$i</td>";
+                            echo "<td >$i</td>";
                             echo "<td>" . $item['student_code'] . "</td>";
                             echo "<td>" . $item['name'] . "</td>";
-                            echo "<input class='chsCode' type='hidden' name='chsCode' value=". $chsCode .">";
-                            echo "<td> <input class='l1' type='text' name='l1'></td>";
-                            echo "<td> <input class='l2' type='text' name='l2'></td>";
-                            echo "<td> <input class='l3' type='text' name='l3'></td>";
-                            echo " <td style='text-align: center;'> <input id='btnChitiet' class='update' type='button' value='update' name='point'> </td>";
+                            echo "<td class='nr' style='display: none'>" . $item['chs_code'] . "</td>";
+                            echo "<td class='l1' contenteditable='true'></td>";
+                            echo "<td class='l2' contenteditable='true'></td>";
+                            echo "<td class='l3' contenteditable='true'></td>";
+                            echo " <td style='text-align: center;'> <button  id='btnChitiet'  type='button' class='use-address'>update</button> </td>";
                             echo "</tr> ";
                         }
                     ?>
