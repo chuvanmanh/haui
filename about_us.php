@@ -29,13 +29,15 @@ if (isset($_POST['sidebarLogin'])) {
     }
 }
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>Home</title>
+    <title>About Us</title>
     <link rel="shortcut icon" href="image/logo.ico">
+
     <!-- Bootstrap Core CSS -->
     <link href="./style/bootstrap.min.css" rel="stylesheet">
 
@@ -141,7 +143,7 @@ if (isset($_POST['sidebarLogin'])) {
 
     <div class="container stretch">
         <div class="row">
-            <img src="./style/header.jpg" />
+            <img src="./style/header.jpg">
         </div>
     </div>
     <div class="navbar   navbar-magbanua  container" role="navigation">
@@ -181,7 +183,8 @@ if (isset($_POST['sidebarLogin'])) {
                         <div class="panel panel-default">
                             <div class="panel-body">
                                 <div class="list-group">
-                                    <div class="well well-sm " style="background-color:#025eb1;color:#fff;"><b> Recent Post </b> </div>
+                                    <div class="well well-sm " style="background-color:#025eb1;color:#fff;"><b> Recent
+                                            Post </b> </div>
                                     <ul>
                                         <li>
                                             <a>Chu Văn Mạnh</a>
@@ -225,20 +228,62 @@ if (isset($_POST['sidebarLogin'])) {
                     </div>
                     <div class="col-lg-9">
                         <div class="panel panel-default">
-                            <div class="panel-heading" style="background-color:#025eb1;color:#fff;">
-                                <b>Home </b>
+                            <div class="panel-heading">
+                                <h3><b> Sứ mệnh và Tầm nhìn</b>
+                                </h3>
                             </div>
+                            <!-- /.panel-heading -->
                             <div class="panel-body">
-                                <div class="home">
-                                    <div class="">
+                                <p>
+                                </p>
+                                <h1> TẦM NHÌN </h1>
 
-                                        <div class=" " style="display: block; z-index: 999;">
-                                            <div style="width:838px; height:470px">
-                                                <img style="width: 100%;" src="./style/1.jpg">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                                HaUI 2025: Văn hóa Lãnh đạo Toàn cầu, Chất lượng và Xuất sắc.
+
+
+                                <h1> SỨ MỆNH </h1>
+
+                                Trường Đại học Công nghiệp Hà Nội cam kết phát triển học thuật và
+                                năng lực doanh nghiệp, tạo điều kiện học tập kinh nghiệm và đảm bảo
+                                các tiêu chuẩn cao nhất về chất lượng và sự xuất sắc cũng như tính toàn vẹn của thể chế.
+
+
+                                <h1> MỤC TIÊU </h1>
+                                <ul>
+                                    <li> Nhận thức rõ sự cần thiết của việc đạt được trật tự, kỷ luật và
+                                        sự tôn trọng giữa các bên liên quan bên trong và bên ngoài của nó trong
+                                        đạt được mối quan hệ hài hòa giữa các cá nhân và tinh thần
+                                        của một.
+                                    </li>
+                                    <li> Tuân thủ cao các chính sách và tiêu chuẩn, quy tắc hiện có và
+                                        các quy định nhằm thúc đẩy văn hóa kỷ luật, tức là kỷ luật
+                                        con người, tư tưởng kỷ luật và hành động kỷ luật.
+                                    </li>
+                                    <li> Chất lượng nâng cao rõ rệt và sự xuất sắc trong học tập và
+                                        các chương trình công nghệ thông qua quốc gia và quốc tế
+                                        công nhận.
+                                    </li>
+                                    <li> Theo đuổi nổi bật mạng lưới địa phương và toàn cầu với các tổ chức của
+                                        cao hơn, Kỹ thuật - Dạy nghề và giáo dục cơ bản.
+                                    </li>
+                                    <li> Thúc đẩy mạnh mẽ các liên kết quốc gia và quốc tế,
+                                        hợp tác và liên doanh với các tổ chức khác để tăng cường
+                                        năng lực và năng lực thể chế.
+                                    </li>
+                                    <li> Áp dụng công nhận và tôn vinh sự xuất sắc trong nội bộ và
+                                        các bên liên quan bên ngoài, các đối tác thể chế trên toàn quốc và
+                                        trên toàn thế giới.
+                                    </li>
+                                    <li> trau dồi sâu sắc và phát triển tính cần thiết và liên tục
+                                        các hoạt động nghiên cứu và khuyến nông có liên quan giữa các nhân viên của nó và
+                                        sinh viên để thúc đẩy các sáng kiến, phát minh và tính mới.
+                                    </li>
+                                    <li> Tập thể nỗ lực và duy trì sự thành lập của Green Valley
+                                        College Foundation Inc. với tư cách là một tổ chức đẳng cấp thế giới từ tốt đến
+                                        tuyệt vời và được xây dựng để tồn tại lâu dài.
+                                    </li>
+                                </ul>
+                                <p></p>
                             </div>
                         </div>
                     </div>
@@ -247,6 +292,3 @@ if (isset($_POST['sidebarLogin'])) {
                     <p align="center">© Online HAUI Student Management System</p>
                 </footer>
             </div>
-        </div>
-    </div>
-</body>

@@ -20,7 +20,7 @@ if(isset($_SESSION['username']))
     <div class="container">
         <?php include 'include/menu.html' ?>
         <div id="main-contain">
-            <h2>CONTACT </h2></br>
+            <h2>CONTACT </h2>
             <div id="contact-contain">
                 <img src="image/fit-logo.png" alt="khoacndttt" height="100%">
                 <br><big>

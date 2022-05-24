@@ -7,12 +7,21 @@ if (isset($_SESSION['username'])) {
 connectDb();
 
 ?>
+
 <head>
     <meta charset="utf-8">
     <title>Giảng viên </title>
     <link rel="stylesheet" href="style/style.css">
     <link rel="stylesheet" href="style/fontawesome/css/all.css">
     <link rel="shortcut icon" href="image/logo.ico">
+    <script>
+        function confirmDelete(link) {
+            if (confirm("Bạn có chắc chắn xóa sinh viên này?")) {
+                doAjax(link.href, "POST"); // doAjax needs to send the "confirm" field
+            }
+            return false;
+        }
+    </script>
 </head>
 <body>
 <?php include 'include/header.html' ?>
@@ -37,7 +46,7 @@ connectDb();
                             <th>Họ Tên</th>
                             <th>MSGV</th>
                             <th>Email</th>
-                            <th>Chuyên môn</th>
+                            <th>Bộ môn</th>
                             <th>SĐT</th>
                             <th>Địa chỉ</th>
                             <th>Chức năng</th>
@@ -66,7 +75,7 @@ connectDb();
                                 echo "<td>" . $item['specialize'] . "</td>";
                                 echo "<td>" . $item['phone_number'] . "</td>";
                                 echo "<td>" . $item['address'] . "</td>";
-                                echo " <td style='text-align: center;'> <a href='function/add_teacher.php?id=" . $teacherId . "'><input id='btnSua' type='button' value='Sửa' '></a>   <a href='function/delete_teacher.php?id=" . $teacherId . "'><input id='btnXoa' type='button' value='Xóa'></a> <a href='function/view_teacher.php?id=" . $teacherId . "'><input id='btnChitiet' type='button' value='Chi  tiết' '></a>  </td>";
+                                echo " <td style='text-align: center;'> <a href='function/add_teacher.php?id=" . $teacherId . "'><input id='btnSua' type='button' value='Sửa' '></a>   <a onclick='return confirmDelete(this);' href='function/delete_teacher.php?id=" . $teacherId . "'><input id='btnXoa' type='button' value='Xóa'></a> <a href='function/view_teacher.php?id=" . $teacherId . "'><input id='btnChitiet' type='button' value='Chi  tiết' '></a>  </td>";
 
                             }
                         }

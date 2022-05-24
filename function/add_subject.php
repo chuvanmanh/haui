@@ -74,11 +74,20 @@ if(isset($_GET['id'])) {
                         $subjectCode = trim($_POST['subject_code']);
                         $numberCredit = trim($_POST['num_credit']);
                         $major = trim($_POST['major']);
+                        $numSub = count(getAllSubjects());
                         if(!$subjectId) {
                             addSubject($subjectCode, $name, $numberCredit, $major);
+
+                            if ($numSub == count(getAllSubjects())) {
+                                echo '<p style="color:red;font-weight:bold; ">ERROR: Mã môn học đã tồn tại!</p> ';
+                            } else
+                                header('location:../subject.php');
                         }
-                        else editSubject($subjectId, $subjectCode, $name, $numberCredit, $major);
-                        header('location:../subject.php');
+                        else 
+                        {
+                            editSubject($subjectId, $subjectCode, $name, $numberCredit, $major);
+                            header('location:../subject.php');
+                        }
                     }
                 }
                 ?>

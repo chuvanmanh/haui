@@ -7,7 +7,7 @@ function connectDb()
     global $conn;
 
     if (!$conn) {
-        $conn = mysqli_connect('localhost', 'root', 'mysql', 'haui') or die ('Can\'t not connect to database');
+        $conn = mysqli_connect('localhost', 'root', '', 'haui') or die ('Can\'t not connect to database');
         mysqli_set_charset($conn, 'utf8');
     }
 }
@@ -96,10 +96,10 @@ function addUser($username, $password, $type)
     $username = addslashes($username);
     $password = addslashes($password);
     $type = addslashes($type);
-    $sql = "INSERT INTO user(username, password, type) VALUES
+    $sql = "INSERT IGNORE INTO user(username, password, type) VALUES
             ('$username','$password','$type')";
 
-    $query = mysqli_query($conn, $sql) or die("thêm user dữ liệu thất bại");
+    $query = mysqli_query($conn, $sql) or die("Thêm user thất bại");
 
     return $query;
 }
@@ -340,11 +340,11 @@ function addTeacher($teacherCode, $name, $email, $specialize, $gender, $phone, $
     $address = addslashes($address);
     $image = addslashes($image);
 
-    $sql = "INSERT INTO teacher( teacher_code, name, email, specialize, gender, phone_number, address, image) VALUES
+    $sql = "INSERT IGNORE INTO teacher( teacher_code, name, email, specialize, gender, phone_number, address, image) VALUES
         ('$teacherCode','$name','$email','$specialize','$gender','$phone','$address','$image') ";
-
     $query = mysqli_query($conn, $sql) or die("thêm teacher dữ liệu thất bại");
-
+    
+    
     return $query;
 }
 
@@ -447,7 +447,7 @@ function addSubject($subjectCode, $name, $numberCredit, $major)
     $numberCredit = addslashes($numberCredit);
     $major = addslashes($major);
 
-    $sql = "INSERT INTO subject(subject_code, name, num_credit, major) VALUES
+    $sql = "INSERT IGNORE INTO subject(subject_code, name, num_credit, major) VALUES
         ('$subjectCode','$name','$numberCredit','$major') ";
 
     $query = mysqli_query($conn, $sql) or die("thêm subject dữ liệu thất bại");
@@ -652,7 +652,7 @@ function getPoint()
 
     connectDb();
 
-    $sql = "select sbj.name as subject_name, stu.student_code, stu.name, p.point_l1, p.point_l2, p.point_l3 from point p 
+    $sql = "select sbj.name as subject_name, stu.student_code, stu.name, p.point_l1, p.point_l2, p.point_l3 from point p
     inner join course_has_student chs on p.chs_code = chs.chs_code
     inner join student stu on chs.student_code = stu.student_code
     inner join course c on c.course_code = chs.course_code
@@ -690,4 +690,17 @@ function searchStudent($keySearch)
 
         return $result;
     }
+}
+function deleteSubject($subjectId)
+{
+    global $conn;
+
+    connectDb();
+
+    $sql = "DELETE FROM subject
+            WHERE id = {$subjectId}";
+
+    $query = mysqli_query($conn, $sql);
+
+    return $query;
 }
